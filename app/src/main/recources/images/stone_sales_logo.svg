@@ -1,0 +1,58 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  
+  <!-- Icon Only (for sidebar) -->
+  <g id="icon">
+    <!-- Stone/Tile geometric shape -->
+    <path d="M256 80 L380 160 L380 320 L256 400 L132 320 L132 160 Z" 
+          fill="#C9B06B" 
+          stroke="#E6D6A8" 
+          stroke-width="8" 
+          stroke-linejoin="miter"/>
+    
+    <!-- Inner facet detail -->
+    <path d="M256 80 L256 240 M132 160 L256 240 M380 160 L256 240 M132 320 L256 240 M380 320 L256 240" 
+          stroke="#8A8A8A" 
+          stroke-width="6" 
+          opacity="0.6"/>
+    
+    <!-- Letter S cutout -->
+    <path d="M256 180 C275 180 290 190 290 205 C290 215 285 222 270 228 C285 234 292 242 292 255 C292 272 275 285 256 285 C237 285 220 275 218 260 L238 258 C239 265 246 270 256 270 C265 270 272 265 272 257 C272 248 264 243 252 243 L252 228 C263 228 270 223 270 215 C270 207 264 195 256 195 C247 195 240 200 238 207 L218 205 C220 190 237 180 256 180 Z" 
+          fill="#151515"/>
+  </g>
+  
+  <!-- Icon + Text Lockup (for login/branding) -->
+  <g id="lockup">
+    <!-- Stone/Tile geometric shape -->
+    <path d="M140 120 L240 180 L240 300 L140 360 L40 300 L40 180 Z" 
+          fill="#C9B06B" 
+          stroke="#E6D6A8" 
+          stroke-width="6" 
+          stroke-linejoin="miter"/>
+    
+    <!-- Inner facet detail -->
+    <path d="M140 120 L140 240 M40 180 L140 240 M240 180 L140 240 M40 300 L140 240 M240 300 L140 240" 
+          stroke="#8A8A8A" 
+          stroke-width="4" 
+          opacity="0.6"/>
+    
+    <!-- Letter S cutout in stone -->
+    <path d="M140 195 C152 195 162 202 162 212 C162 219 158 224 148 228 C158 232 163 237 163 245 C163 256 152 265 140 265 C128 265 117 258 116 248 L128 247 C129 251 133 254 140 254 C146 254 151 251 151 246 C151 240 146 237 138 237 L138 227 C145 227 150 224 150 218 C150 212 146 206 140 206 C134 206 129 209 128 214 L116 213 C117 203 128 195 140 195 Z" 
+          fill="#151515"/>
+    
+    <!-- Text: STONE SALES -->
+    <text x="280" y="225" 
+          font-family="Inter, Segoe UI, Arial, sans-serif" 
+          font-size="64" 
+          font-weight="700" 
+          fill="#C9B06B" 
+          letter-spacing="2">STONE</text>
+    
+    <text x="280" y="285" 
+          font-family="Inter, Segoe UI, Arial, sans-serif" 
+          font-size="64" 
+          font-weight="300" 
+          fill="#8A8A8A" 
+          letter-spacing="4">SALES</text>
+  </g>
+  
+</svg>

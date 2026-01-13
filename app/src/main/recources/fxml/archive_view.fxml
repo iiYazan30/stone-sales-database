@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.DB.databaseproject.controller.ArchiveController"
+      alignment="TOP_LEFT" spacing="20.0" styleClass="view-container"
+      prefWidth="-1" prefHeight="-1"
+      maxWidth="Infinity" maxHeight="Infinity">
+   
+   <padding>
+      <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
+   </padding>
+   
+   <!-- Title Area -->
+   <VBox spacing="8">
+      <Label text="Order Archive" styleClass="view-title" />
+      <Label text="View completed and canceled orders (read-only)" styleClass="view-subtitle" />
+   </VBox>
+   
+   <!-- Search Bar -->
+   <HBox spacing="15" alignment="CENTER_LEFT">
+      
+      <!-- Search TextField -->
+      <TextField fx:id="searchField" 
+                 promptText="Search archived orders..."
+                 styleClass="search-field"
+                 prefWidth="300.0" />
+      
+      <!-- Search Button -->
+      <Button text="Search" 
+              styleClass="btn-secondary"
+              onAction="#onSearchOrder" />
+   </HBox>
+   
+   <!-- Archive TableView (READ-ONLY) -->
+   <TableView fx:id="archiveTable" 
+              styleClass="orders-table"
+              VBox.vgrow="ALWAYS"
+              prefWidth="Infinity" maxWidth="Infinity"
+              editable="false">
+      
+      <columns>
+         <!-- Order ID Column -->
+         <TableColumn fx:id="idColumn" 
+                     text="Order ID" 
+                     prefWidth="100.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Customer Name Column -->
+         <TableColumn fx:id="customerColumn" 
+                     text="Customer Name" 
+                     prefWidth="200.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Employee Name Column -->
+         <TableColumn fx:id="employeeColumn" 
+                     text="Employee Name" 
+                     prefWidth="180.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Order Date Column -->
+         <TableColumn fx:id="dateColumn" 
+                     text="Order Date" 
+                     prefWidth="140.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Total Amount Column -->
+         <TableColumn fx:id="totalColumn" 
+                     text="Total Amount" 
+                     prefWidth="140.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Status Column -->
+         <TableColumn fx:id="statusColumn" 
+                     text="Status" 
+                     prefWidth="140.0"
+                     styleClass="table-column-header" />
+      </columns>
+      
+   </TableView>
+   
+</VBox>

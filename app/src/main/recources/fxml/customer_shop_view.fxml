@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.DB.databaseproject.controller.CustomerShopController"
+      alignment="TOP_LEFT" spacing="20.0" styleClass="view-container"
+      prefWidth="-1" prefHeight="-1"
+      maxWidth="Infinity" maxHeight="Infinity">
+   
+   <padding>
+      <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
+   </padding>
+   
+   <!-- Title Area -->
+   <VBox spacing="8">
+      <Label text="Available Stones" styleClass="view-title" />
+      <Label text="Browse and purchase stone products" styleClass="view-subtitle" />
+   </VBox>
+   
+   <!-- Search Bar -->
+   <HBox spacing="15" alignment="CENTER_LEFT">
+      
+      <!-- Search TextField -->
+      <TextField fx:id="searchField" 
+                 promptText="Search stones by name, type, or size..."
+                 styleClass="search-field"
+                 prefWidth="400.0" />
+      
+      <!-- Search Button -->
+      <Button text="Search" 
+              styleClass="btn-secondary"
+              onAction="#onSearchStone" />
+      
+      <!-- Spacer -->
+      <VBox HBox.hgrow="ALWAYS" />
+      
+      <!-- Request Custom Stone Button -->
+      <Button text="Request Custom Stone" 
+              styleClass="btn-primary"
+              onAction="#onRequestCustomStone"
+              style="-fx-background-color: #C2B280; -fx-text-fill: #1F1F1F; -fx-font-weight: bold; -fx-padding: 10px 20px; -fx-background-radius: 6px;" />
+      
+   </HBox>
+   
+   <!-- Stones Grid Container (ScrollPane with FlowPane) -->
+   <ScrollPane fx:id="scrollPane" 
+               fitToWidth="true" 
+               styleClass="stones-scroll-pane"
+               VBox.vgrow="ALWAYS">
+      
+      <!-- FlowPane for Stone Cards -->
+      <FlowPane fx:id="stonesFlowPane"
+                hgap="20.0" 
+                vgap="20.0"
+                styleClass="stones-flow-pane">
+         <padding>
+            <Insets top="10.0" right="10.0" bottom="10.0" left="10.0" />
+         </padding>
+      </FlowPane>
+      
+   </ScrollPane>
+   
+</VBox>

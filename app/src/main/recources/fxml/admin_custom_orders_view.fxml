@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.DB.databaseproject.controller.AdminCustomOrdersController"
+      alignment="TOP_LEFT" spacing="20" styleClass="view-container"
+      prefWidth="-1" prefHeight="-1"
+      maxWidth="Infinity" maxHeight="Infinity">
+   
+   <padding>
+      <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
+   </padding>
+   
+   <VBox spacing="8">
+      <Label text="Custom Stone Orders" styleClass="view-title" />
+      <Label text="Review and approve/reject custom stone requests from customers" styleClass="view-subtitle" />
+   </VBox>
+   
+   <TableView fx:id="customOrdersTable" VBox.vgrow="ALWAYS"
+             styleClass="table-view">
+      <columns>
+         <TableColumn fx:id="idColumn" text="ID" prefWidth="50" />
+         <TableColumn fx:id="customerNameColumn" text="Customer" prefWidth="120" />
+         <TableColumn fx:id="stoneTypeColumn" text="Stone Type" prefWidth="100" />
+         <TableColumn fx:id="sizeColumn" text="Size" prefWidth="80" />
+         <TableColumn fx:id="quantityColumn" text="Qty" prefWidth="50" />
+         <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="180" />
+         <TableColumn fx:id="statusColumn" text="Status" prefWidth="80" />
+         <TableColumn fx:id="createdAtColumn" text="Requested On" prefWidth="120" />
+         <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="200" />
+      </columns>
+   </TableView>
+   
+</VBox>

@@ -1,0 +1,15 @@
+// Placeholder file - Replace this with your actual stone_bg.png image
+// 
+// Image Requirements:
+// - Resolution: 900x550 or higher
+// - Format: PNG
+// - Colors: Dark gray (#2b2b2b), Matte black (#1f1f1f), Stone beige (#c2b280)
+// - Style: Dark stone texture (marble/granite)
+// - No text or logos
+//
+// Get your image from:
+// 1. Bing Image Creator: https://www.bing.com/images/create
+// 2. Unsplash: https://unsplash.com (search: "dark stone texture")
+// 3. Pexels: https://www.pexels.com (search: "black marble background")
+//
+// Once you have the image, replace this file with the actual stone_bg.png

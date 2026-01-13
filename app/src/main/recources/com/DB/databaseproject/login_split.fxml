@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.DB.databaseproject.LoginController" 
+            prefHeight="600.0" prefWidth="1000.0" 
+            styleClass="root-pane">
+    
+    <!-- Split Layout Container -->
+    <HBox AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0" 
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        
+        <!-- LEFT SIDE: Login Form -->
+        <VBox alignment="CENTER" prefWidth="500.0" styleClass="login-form-side" 
+              HBox.hgrow="ALWAYS">
+            
+            <!-- Login Card Container -->
+            <VBox fx:id="loginCard" styleClass="login-card" 
+                  alignment="CENTER" spacing="20" maxWidth="400">
+                
+                <!-- Logo Container -->
+                <VBox alignment="CENTER" spacing="10">
+                    <!-- Stone Logo - Styled Rectangle with "S" -->
+                    <StackPane styleClass="logo-container">
+                        <Rectangle width="80" height="80" arcWidth="15" arcHeight="15" 
+                                  styleClass="logo-background" />
+                        <Text text="S" styleClass="logo-text" />
+                    </StackPane>
+                </VBox>
+                
+                <!-- Title -->
+                <VBox alignment="CENTER" spacing="5">
+                    <Label text="Stone Sales" styleClass="title-main">
+                        <font>
+                            <Font name="System Bold" size="28.0" />
+                        </font>
+                    </Label>
+                    <Label text="Login to Your Account" styleClass="title-sub">
+                        <font>
+                            <Font size="14.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                
+                <!-- Input Fields Container -->
+                <VBox spacing="15" styleClass="input-container">
+                    <VBox.margin>
+                        <Insets top="10" />
+                    </VBox.margin>
+                    
+                    <!-- Username Field -->
+                    <VBox spacing="5">
+                        <Label text="Username" styleClass="input-label">
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="usernameField" promptText="Enter your username" 
+                                  styleClass="text-input" prefHeight="40.0" />
+                    </VBox>
+                    
+                    <!-- Password Field -->
+                    <VBox spacing="5">
+                        <Label text="Password" styleClass="input-label">
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </Label>
+                        <PasswordField fx:id="passwordField" promptText="Enter your password" 
+                                      styleClass="text-input" prefHeight="40.0" />
+                    </VBox>
+                    
+                    <!-- Error Message Label (Hidden by default) -->
+                    <Label fx:id="errorLabel" text="Invalid credentials. Please try again." 
+                           styleClass="error-label" visible="false" managed="false" wrapText="true">
+                        <font>
+                            <Font size="11.0" />
+                        </font>
+                    </Label>
+                </VBox>
+                
+                <!-- Login Button -->
+                <Button fx:id="loginButton" text="LOGIN" onAction="#handleLogin" 
+                        styleClass="login-button" prefHeight="45.0" maxWidth="Infinity">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10" />
+                    </VBox.margin>
+                </Button>
+                
+                <!-- Footer -->
+                <Label text="Stone Sales Management System" styleClass="footer-text">
+                    <font>
+                        <Font size="11.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="20" />
+                    </VBox.margin>
+                </Label>
+                
+                <!-- Padding for the card -->
+                <padding>
+                    <Insets top="40" right="40" bottom="40" left="40" />
+                </padding>
+            </VBox>
+            
+        </VBox>
+        
+        <!-- RIGHT SIDE: Stone Background Image -->
+        <StackPane prefWidth="500.0" styleClass="background-image-side" 
+                   HBox.hgrow="ALWAYS">
+            
+            <!-- Background Image -->
+            <ImageView fx:id="backgroundImage" preserveRatio="false" 
+                       fitWidth="500.0" fitHeight="600.0">
+                <image>
+                    <!-- This will try to load stone_bg.png if it exists -->
+                    <Image url="@../images/stone_bg.png" 
+                           backgroundLoading="true" 
+                           preserveRatio="false" 
+                           smooth="true" />
+                </image>
+            </ImageView>
+            
+            <!-- Dark Overlay to keep text readable -->
+            <Region styleClass="dark-overlay" />
+            
+            <!-- Optional: Branding Text on Background -->
+            <VBox alignment="CENTER" spacing="20" StackPane.alignment="CENTER">
+                <Label text="Stone Sales" styleClass="brand-title">
+                    <font>
+                        <Font name="System Bold" size="42.0" />
+                    </font>
+                </Label>
+                <Label text="Management System" styleClass="brand-subtitle">
+                    <font>
+                        <Font name="System" size="20.0" />
+                    </font>
+                </Label>
+                <Label text="Premium Quality • Professional Service" 
+                       styleClass="brand-tagline">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </Label>
+            </VBox>
+            
+        </StackPane>
+        
+    </HBox>
+    
+</AnchorPane>

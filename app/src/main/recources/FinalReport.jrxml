@@ -1,0 +1,232 @@
+<!-- Created with Jaspersoft Studio version 7.0.3.final using JasperReports Library version 7.0.3-41034ca841d452f3305ba55b9042260aaa1ab5dd  -->
+<!-- Modified for JasperReports 6.21.0 compatibility: removed uuid attribute from root element -->
+<jasperReport name="FinalReport" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Report.jrdax"/>
+	<style name="Base" default="true" forecolor="#F2F2F2" fontName="Segoe UI" fontSize="11.0" pdfFontName="Helvetica"/>
+	<style name="TitleText" style="Base" forecolor="#C9B06B" fontSize="22.0" bold="true"/>
+	<style name="SubTitleText" style="Base" forecolor="#8A8A8A" fontSize="12.0"/>
+	<style name="SectionTitle" style="Base" forecolor="#C9B06B" fontSize="14.0" bold="true"/>
+	<style name="KpiCard" mode="Opaque" backcolor="#1F1F1F"/>
+	<style name="KpiLabel" style="Base" forecolor="#8A8A8A" fontSize="10.0"/>
+	<style name="KpiValue" style="Base" forecolor="#E6D6A8" fontSize="18.0" bold="true"/>
+	<style name="TableHeader" mode="Opaque" forecolor="#E6D6A8" backcolor="#2A2A2A" fontName="Segoe UI" fontSize="11.0" bold="true"/>
+	<style name="TableDetail" mode="Opaque" forecolor="#F2F2F2" backcolor="#1F1F1F" fontName="Segoe UI" fontSize="10.0"/>
+	<dataset name="OrdersDataset" uuid="f0c9d9d3-7f5c-4d5d-a8bf-5d4c9bdc1b01">
+		<query language="SQL"><![CDATA[SELECT
+    o."Order_ID"      AS order_id,
+    o."Order_Date"    AS order_date,
+    o."Order_Status"  AS order_status,
+    o."Total_Amount"  AS total_amount,
+    (c."First_Name" || ' ' || c."Last_Name") AS customer_name
+FROM "Orders" o
+JOIN "Customer" c ON o."Customer_ID" = c."Customer_ID"
+ORDER BY o."Order_Date" DESC
+LIMIT 15;]]></query>
+		<field name="order_id" class="java.lang.Integer"/>
+		<field name="order_date" class="java.sql.Timestamp"/>
+		<field name="order_status" class="java.lang.String"/>
+		<field name="total_amount" class="java.math.BigDecimal"/>
+		<field name="customer_name" class="java.lang.String"/>
+	</dataset>
+	<dataset name="TopStonesDataset" uuid="7f7e0d3c-2e6d-4a2c-a8a6-0f5f70a34302">
+		<query language="SQL"><![CDATA[SELECT
+    s."Name" AS stone_name,
+    COALESCE(SUM(od."Quantity"),0) AS total_quantity
+FROM "Order_Details" od
+JOIN "Stone" s ON od."Stone_ID" = s."Stone_ID"
+GROUP BY s."Name"
+ORDER BY total_quantity DESC
+LIMIT 6;]]></query>
+		<field name="stone_name" class="java.lang.String"/>
+		<field name="total_quantity" class="java.lang.Long"/>
+	</dataset>
+	<dataset name="MonthlySalesDataset" uuid="f6a0a8d9-11a5-4c4c-9c6c-8d8b7b4f1403">
+		<query language="SQL"><![CDATA[SELECT
+    TO_CHAR(DATE_TRUNC('month', o."Order_Date"), 'Mon YYYY') AS month_label,
+    COALESCE(SUM(o."Total_Amount"),0) AS month_total
+FROM "Orders" o
+GROUP BY DATE_TRUNC('month', o."Order_Date")
+ORDER BY DATE_TRUNC('month', o."Order_Date") DESC
+LIMIT 6;]]></query>
+		<field name="month_label" class="java.lang.String"/>
+		<field name="month_total" class="java.math.BigDecimal"/>
+	</dataset>
+	<query language="SQL"><![CDATA[SELECT
+    (SELECT COUNT(*) FROM "Employee") AS total_employees,
+    (SELECT COUNT(*) FROM "Customer") AS total_customers,
+    (SELECT COUNT(*) FROM "Orders")   AS total_orders,
+    (SELECT COALESCE(SUM("Total_Amount"), 0) FROM "Orders") AS total_sales;]]></query>
+	<field name="total_employees" class="java.lang.Long"/>
+	<field name="total_customers" class="java.lang.Long"/>
+	<field name="total_orders" class="java.lang.Long"/>
+	<field name="total_sales" class="java.math.BigDecimal"/>
+	<background height="802" splitType="Stretch">
+		<element kind="rectangle" uuid="f704490d-ad0b-4069-bcdd-61c02107cc7b" mode="Opaque" x="0" y="0" width="555" height="802" backcolor="#151515">
+			<pen lineWidth="0.0"/>
+		</element>
+	</background>
+	<title/>
+	<pageHeader/>
+	<columnHeader/>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter/>
+	<pageFooter height="25">
+		<element kind="textField" uuid="1cd7e1aa-2f65-4d0c-9c67-1da8b55f6ea1" x="0" y="5" width="555" height="15" style="SubTitleText">
+			<expression><![CDATA["Stone Sales — Confidential | Page " + $V{PAGE_NUMBER}]]></expression>
+		</element>
+	</pageFooter>
+	<summary height="780" splitType="Stretch">
+		<element kind="textField" uuid="7c3adf0f-3f08-4ae3-90cb-32e75bbd2cfe" x="0" y="0" width="555" height="30" style="TitleText">
+			<expression><![CDATA["Stone Sales — Admin Dashboard Report"]]></expression>
+		</element>
+		<element kind="textField" uuid="83c0ee0a-1477-4e18-9adf-1207c7bbd2f8" x="0" y="36" width="555" height="18" style="SubTitleText">
+			<expression><![CDATA["Generated on: " + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm").format(new java.util.Date())]]></expression>
+		</element>
+		<element kind="line" uuid="41f1cb0a-4f54-4cc4-8a73-0d44b3c7b19f" x="0" y="75" width="555" height="1" forecolor="#2A2A2A"/>
+		<element kind="staticText" uuid="3d0b87d7-7d18-4bf1-8bbd-7e6b5d7b1b64" x="0" y="95" width="555" height="20" style="SectionTitle">
+			<text><![CDATA[Overview]]></text>
+		</element>
+		<element kind="rectangle" uuid="8b7b9182-22d7-4a3a-9f58-49d4d3dd2c43" mode="Opaque" x="0" y="125" width="130" height="70" backcolor="#1F1F1F">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="8a7b8c0a-4f6c-4ff5-9df5-1a1c6d6b2b77" x="12" y="133" width="110" height="14" style="KpiLabel">
+			<text><![CDATA[Employees]]></text>
+		</element>
+		<element kind="textField" uuid="d07f0b9f-9c6a-4a17-8a52-35d0c7d0c51b" x="12" y="150" width="110" height="30" style="KpiValue">
+			<expression><![CDATA[$F{total_employees}]]></expression>
+		</element>
+		<element kind="rectangle" uuid="5c3e1d8d-247a-46b1-b71d-2b35d2e0f608" mode="Opaque" x="142" y="125" width="130" height="70" backcolor="#1F1F1F">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="2e4d8c8c-9c7e-4b5c-bdf6-08c31f3fb260" x="154" y="133" width="110" height="14" style="KpiLabel">
+			<text><![CDATA[Customers]]></text>
+		</element>
+		<element kind="textField" uuid="4a5c49aa-7a8c-47ff-a162-c2f1d0cf3d09" x="154" y="150" width="110" height="30" style="KpiValue">
+			<expression><![CDATA[$F{total_customers}]]></expression>
+		</element>
+		<element kind="rectangle" uuid="6b7b3c2c-7b1d-4b9e-bf72-f64b6a6767f4" mode="Opaque" x="284" y="125" width="130" height="70" backcolor="#1F1F1F">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="e3c5a2c6-70ea-4b3c-8b66-9796d9df5dbd" x="296" y="133" width="110" height="14" style="KpiLabel">
+			<text><![CDATA[Total Orders]]></text>
+		</element>
+		<element kind="textField" uuid="6b3f9384-4e92-4b3b-8f4e-79c90d5b50b9" x="296" y="150" width="110" height="30" style="KpiValue">
+			<expression><![CDATA[$F{total_orders}]]></expression>
+		</element>
+		<element kind="rectangle" uuid="a6b2c132-6b76-40f7-a72a-47b7b9e05d10" mode="Opaque" x="426" y="125" width="129" height="70" backcolor="#1F1F1F">
+			<pen lineWidth="0.0"/>
+		</element>
+		<element kind="staticText" uuid="d17c0db7-ec5c-47fc-8e5b-0793e1f3db44" x="438" y="133" width="110" height="14" style="KpiLabel">
+			<text><![CDATA[Total Sales]]></text>
+		</element>
+		<element kind="textField" uuid="1ed0debb-7e7a-4a3b-8cc8-4aa1d8f4d5b2" x="438" y="150" width="110" height="30" pattern="$ #,##0.00" style="KpiValue">
+			<expression><![CDATA[$F{total_sales}]]></expression>
+		</element>
+		<element kind="line" uuid="a3b6df9a-6af1-4c22-9c9f-31c3ac0d0d9d" x="0" y="210" width="555" height="1" forecolor="#2A2A2A"/>
+		<element kind="staticText" uuid="6f9b2b71-23d1-4fd9-8f19-9a4a2c0b4f4a" x="0" y="225" width="555" height="20" style="SectionTitle">
+			<text><![CDATA[Recent Orders]]></text>
+		</element>
+		<element kind="component" uuid="d2fdd6a8-6cdd-44d0-9f31-7f6d3c9c0d5d" x="0" y="250" width="555" height="210">
+			<component kind="table">
+				<datasetRun uuid="d79a0677-aa17-4c85-a6ed-d2244b3c48aa" subDataset="OrdersDataset">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<column kind="single" uuid="1fdd6d4b-1e4a-4026-b2db-0b3373e7a34a" width="55">
+					<columnHeader height="24">
+						<element kind="staticText" uuid="b8de0cde-53f6-4f73-9b93-fc0e3c9a80b7" x="0" y="0" width="55" height="24" style="TableHeader">
+							<text><![CDATA[ID]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="24">
+						<element kind="textField" uuid="5e5b6a41-39e2-4b12-b9c7-5b5f2de9b3b8" x="0" y="0" width="55" height="24" style="TableDetail">
+							<expression><![CDATA[$F{order_id}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="26be257c-5333-4442-b690-b051c9f8f17b" width="190">
+					<columnHeader height="24">
+						<element kind="staticText" uuid="9f1d8b90-0c92-4bb2-bd0b-f9d9b89c1d0f" x="0" y="0" width="190" height="24" style="TableHeader">
+							<text><![CDATA[Customer]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="24">
+						<element kind="textField" uuid="f30245c7-1c8b-4a8c-b815-6eddb2b964da" x="0" y="0" width="190" height="24" style="TableDetail">
+							<expression><![CDATA[$F{customer_name}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="51f49a73-58ea-45ac-b7a6-043147575f46" width="110">
+					<columnHeader height="24">
+						<element kind="staticText" uuid="a42c5a90-1d2d-4c25-8a74-1d548c4c5c02" x="0" y="0" width="110" height="24" style="TableHeader">
+							<text><![CDATA[Status]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="24">
+						<element kind="textField" uuid="c2b6aa73-10fb-4c9d-82f9-9f78f77d2c04" x="0" y="0" width="110" height="24" style="TableDetail">
+							<expression><![CDATA[$F{order_status}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="49fc538b-63d7-43d5-bfe7-e88d3f09c233" width="95">
+					<columnHeader height="24">
+						<element kind="staticText" uuid="b38c7466-3b21-41d3-9d3c-2af0d0ad2d39" x="0" y="0" width="95" height="24" style="TableHeader">
+							<text><![CDATA[Date]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="24">
+						<element kind="textField" uuid="7a73f4a4-77a3-4b68-9b8f-821f4a50c0f4" x="0" y="0" width="95" height="24" pattern="yyyy-MM-dd" style="TableDetail">
+							<expression><![CDATA[$F{order_date}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+				<column kind="single" uuid="6ecc0020-1554-4e26-a2e9-eb83ef85a9d2" width="105">
+					<columnHeader height="24">
+						<element kind="staticText" uuid="a38a792a-4f57-4a9c-bf0f-9e2aafc8b7f0" x="0" y="0" width="105" height="24" style="TableHeader">
+							<text><![CDATA[Total]]></text>
+						</element>
+					</columnHeader>
+					<detailCell height="24">
+						<element kind="textField" uuid="5a7f3f10-7a67-4b75-94c8-1e8a3c1b9c8e" x="0" y="0" width="105" height="24" pattern="$ #,##0.00" style="TableDetail">
+							<expression><![CDATA[$F{total_amount}]]></expression>
+						</element>
+					</detailCell>
+				</column>
+			</component>
+		</element>
+		<element kind="line" uuid="b78f9b9c-14a3-4bc0-a7f4-96db1f5a3ad1" x="0" y="475" width="555" height="1" forecolor="#2A2A2A"/>
+		<element kind="staticText" uuid="f9b2ce4d-2a3c-4a7d-8e3a-c1cbbaf63c8d" x="0" y="490" width="555" height="20" style="SectionTitle">
+			<text><![CDATA[Sales Insights]]></text>
+		</element>
+		<element kind="chart" chartType="pie" uuid="f99e5ee4-7f0a-4b38-bd55-1b0b622f3b87" x="0" y="520" width="270" height="220" legendColor="#8A8A8A">
+			<dataset kind="pie">
+				<datasetRun uuid="ec8f0ff7-a225-4879-9b0e-31ab6beaccb8" subDataset="TopStonesDataset">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<series>
+					<keyExpression><![CDATA[$F{stone_name}]]></keyExpression>
+					<valueExpression><![CDATA[$F{total_quantity}]]></valueExpression>
+				</series>
+			</dataset>
+			<plot>
+				<itemLabel/>
+			</plot>
+		</element>
+		<element kind="chart" chartType="bar" uuid="2aa1f3ac-1b8c-4d0b-b8d0-5f1c2d1d3d02" x="285" y="520" width="270" height="220" legendColor="#8A8A8A">
+			<dataset kind="category">
+				<datasetRun uuid="e9c4032e-af79-4201-8ddd-6fed502091c8" subDataset="MonthlySalesDataset">
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				</datasetRun>
+				<series>
+					<seriesExpression><![CDATA["Sales"]]></seriesExpression>
+					<categoryExpression><![CDATA[$F{month_label}]]></categoryExpression>
+					<valueExpression><![CDATA[$F{month_total}]]></valueExpression>
+				</series>
+			</dataset>
+			<plot>
+				<itemLabel/>
+			</plot>
+		</element>
+	</summary>
+</jasperReport>
