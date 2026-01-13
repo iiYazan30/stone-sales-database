@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.shape.Line?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.DB.databaseproject.controller.EmployeeDashboardController"
+            prefWidth="1400.0" prefHeight="900.0"
+            maxWidth="Infinity" maxHeight="Infinity"
+            styleClass="dashboard-root">
+   
+   <!-- LEFT SIDEBAR (Narrower for Employee) -->
+   <left>
+      <BorderPane styleClass="sidebar" prefWidth="240.0" minWidth="240.0">
+         
+         <!-- TOP: Logo Section -->
+         <top>
+            <VBox alignment="CENTER" spacing="10" styleClass="logo-section">
+               <padding>
+                  <Insets top="20" bottom="20" />
+               </padding>
+               
+               <!-- Logo Placeholder -->
+               <StackPane styleClass="sidebar-logo-container" prefWidth="60" prefHeight="60">
+                  <!-- Outer Circle Background -->
+                  <Circle radius="30" fill="#2a2a2a"/>
+                  
+                  <!-- Main Circle with Gradient Effect -->
+                  <Circle radius="27" fill="#C9B06B"/>
+                  <Circle radius="27" fill="#E6D6A8" opacity="0.2"/>
+                  
+                  <!-- Bold Letter S -->
+                  <Label text="S" 
+                         style="-fx-font-family: 'Arial Black', 'Impact', sans-serif; 
+                                -fx-font-size: 36px; 
+                                -fx-font-weight: 900; 
+                                -fx-text-fill: #1a1a1a;"/>
+                  
+                  <!-- Subtle Inner Ring -->
+                  <Circle radius="25" fill="transparent" stroke="#1a1a1a" strokeWidth="1" opacity="0.3"/>
+                  
+                  <!-- Outer Accent Ring -->
+                  <Circle radius="29" fill="transparent" stroke="#E6D6A8" strokeWidth="1" opacity="0.5"/>
+               </StackPane>
+               
+               <Label text="Stone Sales" styleClass="sidebar-brand" />
+               <Label text="Employee" styleClass="sidebar-subtitle" />
+            </VBox>
+         </top>
+         
+         <!-- CENTER: Navigation Buttons -->
+         <center>
+            <VBox spacing="8" styleClass="nav-container">
+               <padding>
+                  <Insets top="20" left="15" right="15" />
+               </padding>
+               
+               <Button fx:id="ordersBtn" text="Assigned Orders" 
+                       styleClass="nav-button" 
+                       maxWidth="Infinity"
+                       prefWidth="Infinity" 
+                       onAction="#showOrders">
+                  <graphic>
+                     <FontIcon iconLiteral="fas-clipboard-check" iconSize="16" styleClass="nav-icon" />
+                  </graphic>
+               </Button>
+               
+               <Button fx:id="profileBtn" text="Profile" 
+                       styleClass="nav-button" 
+                       maxWidth="Infinity"
+                       prefWidth="Infinity" 
+                       onAction="#showProfile">
+                  <graphic>
+                     <FontIcon iconLiteral="fas-user-circle" iconSize="16" styleClass="nav-icon" />
+                  </graphic>
+               </Button>
+            </VBox>
+         </center>
+         
+         <!-- BOTTOM: Logout Button (Sticky) -->
+         <bottom>
+            <VBox alignment="BOTTOM_CENTER" spacing="8">
+               <padding>
+                  <Insets top="20" bottom="20" left="15" right="15" />
+               </padding>
+               
+               <Button fx:id="logoutBtn" text="Logout" 
+                       styleClass="nav-button,logout-button" 
+                       maxWidth="Infinity"
+                       prefWidth="Infinity" 
+                       onAction="#handleLogout">
+                  <graphic>
+                     <FontIcon iconLiteral="fas-sign-out-alt" iconSize="16" styleClass="nav-icon-logout" />
+                  </graphic>
+               </Button>
+            </VBox>
+         </bottom>
+         
+      </BorderPane>
+   </left>
+   
+   <!-- MAIN CONTENT AREA -->
+   <center>
+      <StackPane fx:id="contentArea" styleClass="content-area">
+         
+         <!-- Default Welcome View -->
+         <VBox alignment="CENTER" spacing="20" fx:id="welcomeView">
+            <Label text="Welcome, Employee" styleClass="welcome-title" />
+            <Label text="Mahmoud Salameh" styleClass="welcome-subtitle" />
+            <Label text="Employee ID: 2001" styleClass="welcome-tagline" />
+         </VBox>
+         
+      </StackPane>
+   </center>
+   
+</BorderPane>

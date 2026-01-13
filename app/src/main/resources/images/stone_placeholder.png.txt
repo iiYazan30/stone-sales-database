@@ -1,0 +1,16 @@
+Stone placeholder image will be here.
+
+Since I cannot create actual image files, please create a simple placeholder image:
+
+1. Create a 200x200 PNG file
+2. Fill it with a stone texture or gray color (#8B8B8B)
+3. Add text "Stone" in the center
+4. Save it as: src/main/resources/images/stone_placeholder.png
+
+OR use this temporary solution:
+- Download a free stone texture image from:
+  https://via.placeholder.com/200x200/8B8B8B/FFFFFF?text=Stone
+  
+- Save it to: src/main/resources/images/stone_placeholder.png
+
+The application will look for this image at runtime.

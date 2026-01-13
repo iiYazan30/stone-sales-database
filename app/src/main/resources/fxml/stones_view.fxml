@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.DB.databaseproject.controller.StonesController"
+      alignment="TOP_LEFT" spacing="20.0" styleClass="view-container"
+      prefWidth="-1" prefHeight="-1"
+      maxWidth="Infinity" maxHeight="Infinity">
+   
+   <padding>
+      <Insets top="30.0" right="30.0" bottom="30.0" left="30.0" />
+   </padding>
+   
+   <!-- Title Area -->
+   <VBox spacing="8">
+      <Label text="Stones Catalog" styleClass="view-title" />
+      <Label text="Manage stone types, prices, stock, and images" styleClass="view-subtitle" />
+   </VBox>
+   
+   <!-- Search and Action Bar -->
+   <HBox spacing="15" alignment="CENTER_LEFT">
+      
+      <!-- Search TextField -->
+      <TextField fx:id="searchField" 
+                 promptText="Search stones..."
+                 styleClass="search-field"
+                 prefWidth="300.0" />
+      
+      <!-- Search Button -->
+      <Button text="Search" 
+              styleClass="btn-secondary"
+              onAction="#onSearchStone" />
+      
+      <!-- Spacer -->
+      <Region HBox.hgrow="ALWAYS" />
+      
+      <!-- Add Stone Button -->
+      <Button text="+ Add Stone" 
+              styleClass="btn-primary"
+              onAction="#onAddStone" />
+   </HBox>
+   
+   <!-- Stones TableView -->
+   <TableView fx:id="stonesTable" 
+              styleClass="stones-table"
+              VBox.vgrow="ALWAYS"
+              prefWidth="Infinity" maxWidth="Infinity">
+      
+      <columns>
+         <!-- Stone ID Column - FIXED: Increased width to prevent "St..." truncation -->
+         <TableColumn fx:id="idColumn" 
+                     text="Stone ID" 
+                     minWidth="100.0"
+                     prefWidth="110.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Name Column - FIXED: Adequate width -->
+         <TableColumn fx:id="nameColumn" 
+                     text="Name" 
+                     minWidth="150.0"
+                     prefWidth="180.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Type Column - FIXED: Adequate width -->
+         <TableColumn fx:id="typeColumn" 
+                     text="Type" 
+                     minWidth="120.0"
+                     prefWidth="140.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Size Column - FIXED: Adequate width -->
+         <TableColumn fx:id="sizeColumn" 
+                     text="Size" 
+                     minWidth="110.0"
+                     prefWidth="120.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Price Per Unit Column - FIXED: Increased width to prevent truncation -->
+         <TableColumn fx:id="priceColumn" 
+                     text="Price Per Unit" 
+                     minWidth="150.0"
+                     prefWidth="170.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Quantity in Stock Column - FIXED: Increased width to prevent truncation -->
+         <TableColumn fx:id="quantityColumn" 
+                     text="Quantity in Stock" 
+                     minWidth="180.0"
+                     prefWidth="200.0"
+                     styleClass="table-column-header" />
+         
+         <!-- Image Column - FIXED: Adequate width -->
+         <TableColumn fx:id="imageColumn" 
+                     text="Image" 
+                     minWidth="100.0"
+                     prefWidth="110.0"
+                     styleClass="table-column-header"
+                     sortable="false" />
+         
+         <!-- Actions Column - FIXED: Increased width to accommodate Edit/Delete buttons -->
+         <TableColumn fx:id="actionsColumn" 
+                     text="Actions" 
+                     minWidth="200.0"
+                     prefWidth="220.0"
+                     styleClass="table-column-header"
+                     sortable="false" />
+      </columns>
+      
+   </TableView>
+   
+</VBox>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane fx:id="rootPane" 
+            styleClass="root-pane" 
+            xmlns="http://javafx.com/javafx/21" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="com.DB.databaseproject.LoginController">
+   
+   <!-- Split Layout Container - Fully Responsive -->
+   <HBox spacing="0" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" 
+         AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+      
+      <!-- LEFT SIDE: Login Form - Wider Layout -->
+      <VBox fx:id="loginCard" alignment="CENTER" 
+            spacing="20.0" styleClass="login-card"
+            prefWidth="500.0" minWidth="450.0">
+         
+         <!-- Logo Container -->
+         <StackPane styleClass="logo-container" prefWidth="120" prefHeight="120">
+            <!-- Outer Circle Background -->
+            <Circle radius="60" fill="#2a2a2a"/>
+            
+            <!-- Main Circle with Gradient Effect (simulated with multiple circles) -->
+            <Circle radius="55" fill="#C9B06B"/>
+            <Circle radius="55" fill="#E6D6A8" opacity="0.2"/>
+            
+            <!-- Bold Letter S -->
+            <Label text="S" 
+                   style="-fx-font-family: 'Arial Black', 'Impact', sans-serif; 
+                          -fx-font-size: 72px; 
+                          -fx-font-weight: 900; 
+                          -fx-text-fill: #1a1a1a;"/>
+            
+            <!-- Subtle Inner Ring -->
+            <Circle radius="50" fill="transparent" stroke="#1a1a1a" strokeWidth="2" opacity="0.3"/>
+            
+            <!-- Outer Accent Ring -->
+            <Circle radius="58" fill="transparent" stroke="#E6D6A8" strokeWidth="1.5" opacity="0.5"/>
+         </StackPane>
+         
+         <!-- Title -->
+         <Label text="Stone Sales" styleClass="login-title-main" />
+         
+         <!-- Subtitle -->
+         <Label text="Login to Your Account" styleClass="login-subtitle" />
+         
+         <!-- Input Fields Container - Wider -->
+         <VBox spacing="15" styleClass="input-container" maxWidth="450.0" prefWidth="450.0">
+            
+            <!-- Username Field -->
+            <VBox spacing="8.0">
+               <Label text="Username" styleClass="input-label" />
+               <TextField fx:id="usernameField" promptText="Enter your username" 
+                          styleClass="text-field">
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </TextField>
+            </VBox>
+            
+            <!-- Password Field -->
+            <VBox spacing="8.0">
+               <Label text="Password" styleClass="input-label" />
+               <PasswordField fx:id="passwordField" promptText="Enter your password" 
+                              styleClass="password-field">
+                  <VBox.margin>
+                     <Insets />
+                  </VBox.margin>
+               </PasswordField>
+            </VBox>
+            
+            <!-- Error Message Label (hidden by default) -->
+            <Label fx:id="errorLabel" styleClass="error-label" 
+                   text="Invalid username or password" 
+                   visible="false" wrapText="true" />
+            
+            <!-- Login Button -->
+            <Button fx:id="loginButton" maxWidth="Infinity" 
+                    mnemonicParsing="false" onAction="#handleLogin" 
+                    text="LOGIN" styleClass="login-button" prefHeight="45">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Button>
+         </VBox>
+         
+         <!-- Sign Up Link -->
+         <HBox alignment="CENTER" spacing="5">
+            <Label text="Don't have an account?" styleClass="signup-text" />
+            <Label fx:id="signupLink" text="Create one" styleClass="signup-link" 
+                   onMouseClicked="#handleSignupClick" />
+            <VBox.margin>
+               <Insets top="10.0" />
+            </VBox.margin>
+         </HBox>
+         
+         <!-- Footer -->
+         <Label text="Stone Sales Management System" styleClass="footer-text">
+            <VBox.margin>
+               <Insets top="10.0" />
+            </VBox.margin>
+         </Label>
+         
+         <padding>
+            <Insets top="50.0" right="50.0" bottom="50.0" left="50.0" />
+         </padding>
+      </VBox>
+      
+      <!-- RIGHT SIDE: Stone Background Image - Flexible Width -->
+      <StackPane fx:id="imagePane" styleClass="stone-background-pane"
+                 HBox.hgrow="ALWAYS">
+         
+         <!-- Background Image - Bound to parent size in controller -->
+         <ImageView fx:id="backgroundImage" 
+                    preserveRatio="false" pickOnBounds="true">
+            <Image url="@../images/stone_bg.png" />
+         </ImageView>
+         
+         <!-- Dark Overlay for readability - Bound to parent size -->
+         <Rectangle fx:id="overlayRectangle" styleClass="overlay-rectangle" />
+         
+         <!-- Optional: Branding Text on Stone Background -->
+         <VBox alignment="CENTER" spacing="15" styleClass="brand-container">
+            <Label text="Welcome to" styleClass="brand-text-small" />
+            <Label text="Stone Sales" styleClass="brand-text-large" />
+            <Label text="Management System" styleClass="brand-text-medium" />
+            <Label text="Premium Dark Edition" styleClass="brand-text-accent" />
+         </VBox>
+         
+      </StackPane>
+      
+   </HBox>
+   
+</AnchorPane>

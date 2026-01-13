@@ -1,0 +1,346 @@
+/* ================================================
+   STONE PREMIUM DARK THEME - Split Layout Login
+   ================================================ */
+
+/* Root Pane - Dark Background */
+.root-pane {
+    -fx-background-color: #1F1F1F;
+}
+
+/* ================================================
+   LEFT SIDE: Login Card
+   ================================================ */
+
+/* Login card container - Left side form */
+.login-card {
+    -fx-background-color: #1F1F1F;
+    -fx-padding: 50px;
+}
+
+/* Logo container */
+.logo-container {
+    -fx-background-color: linear-gradient(to bottom, #C2B280, #A89968);
+    -fx-background-radius: 15px;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 100px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, rgba(194, 178, 128, 0.4), 15, 0, 0, 3);
+}
+
+.logo-text {
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1F1F1F;
+    -fx-font-family: "Arial Black", "Arial Bold", sans-serif;
+}
+
+/* ================================================
+   TITLE STYLING
+   ================================================ */
+
+.login-title-main {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+.login-subtitle {
+    -fx-text-fill: #C2B280;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 10 0;
+}
+
+/* ================================================
+   INPUT FIELDS STYLING
+   ================================================ */
+
+.input-container {
+    -fx-max-width: 350px;
+}
+
+.input-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+}
+
+.text-field, .password-field {
+    -fx-background-color: #2A2A2A;
+    -fx-background-radius: 8px;
+    -fx-border-color: #4A4A4A;
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+    -fx-text-fill: #FFFFFF;
+    -fx-prompt-text-fill: #6E6E6E;
+    -fx-font-size: 14px;
+    -fx-padding: 12px 15px;
+    -fx-pref-height: 45px;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #C2B280;
+    -fx-border-width: 2px;
+    -fx-background-color: #2A2A2A;
+    -fx-effect: dropshadow(gaussian, rgba(194, 178, 128, 0.3), 8, 0, 0, 0);
+}
+
+.text-field:hover, .password-field:hover {
+    -fx-border-color: #5A5A5A;
+}
+
+/* ================================================
+   BUTTON STYLING
+   ================================================ */
+
+.login-button {
+    -fx-background-color: #C2B280;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #1F1F1F;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 14px 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(194, 178, 128, 0.4), 10, 0, 0, 3);
+}
+
+.login-button:hover {
+    -fx-background-color: #D4C799;
+    -fx-effect: dropshadow(gaussian, rgba(194, 178, 128, 0.6), 15, 0, 0, 4);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.login-button:pressed {
+    -fx-background-color: #B0A070;
+    -fx-translate-y: 1px;
+}
+
+/* ================================================
+   ERROR MESSAGE
+   ================================================ */
+
+.error-label {
+    -fx-text-fill: #FF6B6B;
+    -fx-background-color: rgba(255, 107, 107, 0.1);
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #FF6B6B;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-font-size: 12px;
+}
+
+/* ================================================
+   FOOTER TEXT
+   ================================================ */
+
+.footer-text {
+    -fx-text-fill: #6E6E6E;
+    -fx-font-size: 11px;
+    -fx-font-style: italic;
+}
+
+/* ================================================
+   SIGN UP LINK
+   ================================================ */
+
+.signup-text {
+    -fx-text-fill: #AAAAAA;
+    -fx-font-size: 13px;
+}
+
+.signup-link {
+    -fx-text-fill: #C2B280;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.signup-link:hover {
+    -fx-text-fill: #D4C799;
+}
+
+/* ================================================
+   RIGHT SIDE: Stone Background
+   ================================================ */
+
+/* Stone background pane with gradient texture */
+.stone-background-pane {
+    /* Multi-layer gradient to simulate stone texture */
+    -fx-background-color: 
+        radial-gradient(center 30% 20%, radius 60%, rgba(194, 178, 128, 0.15), transparent),
+        radial-gradient(center 70% 80%, radius 50%, rgba(194, 178, 128, 0.1), transparent),
+        linear-gradient(135deg, 
+            #2B2B2B 0%, 
+            #1F1F1F 25%, 
+            #2B2B2B 50%, 
+            #1F1F1F 75%, 
+            #252525 100%);
+    -fx-background-size: cover;
+}
+
+/* Dark overlay rectangle */
+.overlay-rectangle {
+    -fx-fill: rgba(31, 31, 31, 0.3);
+}
+
+/* ================================================
+   BRANDING TEXT ON STONE BACKGROUND
+   ================================================ */
+
+.brand-container {
+    -fx-padding: 50px;
+}
+
+.brand-text-small {
+    -fx-text-fill: rgba(255, 255, 255, 0.6);
+    -fx-font-size: 16px;
+    -fx-font-weight: 300;
+}
+
+.brand-text-large {
+    -fx-text-fill: #C2B280;
+    -fx-font-size: 48px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 3);
+}
+
+.brand-text-medium {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 24px;
+    -fx-font-weight: 500;
+}
+
+.brand-text-accent {
+    -fx-text-fill: rgba(194, 178, 128, 0.8);
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+    -fx-padding: 10 0 0 0;
+}
+
+/* ================================================
+   SIGN-UP PAGE SPECIFIC STYLES
+   ================================================ */
+
+/* Scroll pane for signup form */
+.scroll-pane {
+    -fx-background-color: #1F1F1F;
+    -fx-background: #1F1F1F;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: #1F1F1F;
+}
+
+.scroll-pane .scroll-bar {
+    -fx-background-color: #2A2A2A;
+}
+
+.scroll-pane .scroll-bar .thumb {
+    -fx-background-color: #C2B280;
+    -fx-background-radius: 5px;
+}
+
+/* Signup card container */
+.signup-card {
+    -fx-background-color: #1F1F1F;
+    -fx-padding: 40px 50px;
+}
+
+/* Signup title */
+.signup-title-main {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+}
+
+.signup-subtitle {
+    -fx-text-fill: #C2B280;
+    -fx-font-size: 14px;
+    -fx-padding: 0 0 5 0;
+}
+
+/* Optional field label */
+.input-label-optional {
+    -fx-text-fill: #AAAAAA;
+    -fx-font-size: 13px;
+    -fx-font-weight: 500;
+    -fx-font-style: italic;
+}
+
+/* Register Button */
+.register-button {
+    -fx-background-color: #C2B280;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #1F1F1F;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 14px 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(194, 178, 128, 0.4), 10, 0, 0, 3);
+}
+
+.register-button:hover {
+    -fx-background-color: #D4C799;
+    -fx-effect: dropshadow(gaussian, rgba(194, 178, 128, 0.6), 15, 0, 0, 4);
+    -fx-scale-y: 1.02;
+    -fx-scale-x: 1.02;
+}
+
+.register-button:pressed {
+    -fx-background-color: #B0A070;
+    -fx-translate-y: 1px;
+}
+
+/* Cancel Button */
+.cancel-button {
+    -fx-background-color: #4A4A4A;
+    -fx-background-radius: 8px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 14px 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+}
+
+.cancel-button:hover {
+    -fx-background-color: #5A5A5A;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0, 3);
+}
+
+.cancel-button:pressed {
+    -fx-background-color: #3A3A3A;
+    -fx-translate-y: 1px;
+}
+
+/* Success Message */
+.success-label {
+    -fx-text-fill: #4CAF50;
+    -fx-background-color: rgba(76, 175, 80, 0.1);
+    -fx-padding: 8px 12px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #4CAF50;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-font-size: 12px;
+}
+
+/* Back to login link */
+.back-to-login-text {
+    -fx-text-fill: #AAAAAA;
+    -fx-font-size: 13px;
+}
+
+.back-to-login-link {
+    -fx-text-fill: #C2B280;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-underline: true;
+    -fx-cursor: hand;
+}
+
+.back-to-login-link:hover {
+    -fx-text-fill: #D4C799;
+}
